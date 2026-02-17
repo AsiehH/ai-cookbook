@@ -32,12 +32,24 @@ completion = client.beta.chat.completions.parse(
     ],
     response_format=CalendarEvent,
 )
-
+# with responses API
+response = client.responses.parse(
+    model="gpt-4o-2024-08-06",
+    input=[
+        {"role": "system", "content": "Extract the event information."},
+        {
+            "role": "user",
+            "content": "Alice and Bob are going to a science fair on Friday.",
+        },
+    ],
+    text_format=CalendarEvent,
+)
 # --------------------------------------------------------------
 # Step 3: Parse the response
 # --------------------------------------------------------------
 
-event = completion.choices[0].message.parsed
+# event = completion.choices[0].message.parsed
+event = response.output_parsed
 event.name
 event.date
 event.participants
