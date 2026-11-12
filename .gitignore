@@ -108,3 +108,13 @@ qdrant_data/
 *.mp4
 
 .cursor/
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+*/docs
+
+# Codex
+.agents/
+AGENTS.md
